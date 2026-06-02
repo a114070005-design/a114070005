@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>崴孟三百天活動網站</title>
+  <title>崴孟三百天｜世新大學紀念演唱會</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,218 +11,224 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     body {
       font-family: "Noto Sans TC", sans-serif;
-      background: linear-gradient(to bottom, #fff7f0, #ffe4ec);
+      background: #fffafa;
     }
     .hero-bg {
-      background-image: url('https://weimengmusic.com/images/a2.jpg');
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                  url('https://weimengmusic.com/images/a2.jpg');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
+    }
+    .glass-nav {
+      background: rgba(219, 39, 119, 0.8);
+      backdrop-filter: blur(10px);
+    }
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+      opacity: 0.4;
     }
   </style>
 </head>
 
-<body class="text-gray-800 pt-16">
+<body class="text-gray-800 overflow-x-hidden">
 
   <!-- Navbar -->
-  <nav id="navbar" class="fixed top-0 left-0 w-full bg-pink-500/90 backdrop-blur-md shadow-lg z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
-      <a href="#" class="text-white text-2xl font-bold hover:text-yellow-200 transition">
-        崴孟三百天
+  <nav id="navbar" class="fixed top-0 left-0 w-full glass-nav shadow-lg z-50 transition-all duration-500 py-4">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <a href="#" class="text-white text-2xl font-black tracking-tighter flex items-center gap-2">
+        <span class="bg-white text-pink-600 px-2 py-0.5 rounded">崴孟</span>
+        三百天
       </a>
 
       <!-- 桌面版選單 -->
-      <div class="space-x-6 hidden md:flex items-center">
-        <a href="https://www.instagram.com/weimeng_music/" target="_blank" class="text-white hover:text-yellow-200 transition font-medium">IG</a>
-        <a href="https://www.youtube.com/@weimeng_music" target="_blank" class="text-white hover:text-yellow-200 transition font-medium">YT</a>
-        <a href="https://www.threads.net/@weimeng_music" target="_blank" class="text-white hover:text-yellow-200 transition font-medium">Threads</a>
-        <a href="https://open.spotify.com/artist/6Hp3dA5pPjIO2glZ4nsP0Y" target="_blank" class="text-white hover:text-yellow-200 transition font-medium">Spotify</a>
-        <a href="#about" class="bg-white/20 text-white hover:bg-white/40 px-4 py-2 rounded-full transition text-sm">關於我們</a>
+      <div class="space-x-8 hidden md:flex items-center">
+        <div class="flex space-x-4 border-r border-pink-400 pr-6">
+          <a href="https://www.instagram.com/weimeng_music/" target="_blank" class="text-white hover:text-yellow-200 transition">IG</a>
+          <a href="https://www.youtube.com/@weimeng_music" target="_blank" class="text-white hover:text-yellow-200 transition">YT</a>
+          <a href="https://open.spotify.com/artist/6Hp3dA5pPjIO2glZ4nsP0Y" target="_blank" class="text-white hover:text-yellow-200 transition">Spotify</a>
+        </div>
+        <a href="#about" class="text-white hover:text-yellow-200 font-medium">關於活動</a>
+        <a href="#schedule" class="text-white hover:text-yellow-200 font-medium">節目流程</a>
+        <a href="https://forms.gle/tbWHbGoc2NLo5DFL8" target="_blank" class="bg-yellow-400 text-pink-900 px-6 py-2 rounded-full font-bold hover:bg-white transition-all transform hover:scale-105 shadow-md">立即報名</a>
       </div>
 
       <!-- 手機版漢堡按鈕 -->
-      <button id="menu-btn" class="text-white md:hidden focus:outline-none" aria-label="Toggle Menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
+      <button id="menu-btn" class="text-white md:hidden">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
 
     <!-- 手機版下拉選單 -->
-    <div id="mobile-menu" class="hidden md:hidden bg-pink-600 px-6 py-4 space-y-3 shadow-inner">
-      <a href="https://www.instagram.com/weimeng_music/" target="_blank" class="block text-white hover:text-yellow-200 py-1">IG</a>
-      <a href="https://www.youtube.com/@weimeng_music" target="_blank" class="block text-white hover:text-yellow-200 py-1">YT</a>
-      <a href="https://www.threads.net/@weimeng_music" target="_blank" class="block text-white hover:text-yellow-200 py-1">Threads</a>
-      <a href="https://open.spotify.com/artist/6Hp3dA5pPjIO2glZ4nsP0Y" target="_blank" class="block text-white hover:text-yellow-200 py-1">Spotify</a>
-      <a href="#about" class="block text-white hover:text-yellow-200 py-1 border-t border-pink-400 pt-2">關於我們</a>
+    <div id="mobile-menu" class="hidden md:hidden bg-pink-700 px-6 py-8 space-y-6 text-center">
+      <a href="#about" class="block text-xl text-white">關於活動</a>
+      <a href="#schedule" class="block text-xl text-white">節目流程</a>
+      <a href="https://forms.gle/tbWHbGoc2NLo5DFL8" target="_blank" class="block text-xl text-yellow-300 font-bold">立即報名</a>
+      <a href="https://a114070005-design.github.io/" target="_blank" class="block text-xl text-white/70">個人履歷</a>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero-bg h-[calc(100vh-4rem)] flex items-center justify-center text-center relative">
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="relative z-10 px-6 max-w-4xl">
-      <h2 class="text-4xl md:text-6xl font-black text-white drop-shadow-xl leading-tight">
-        世新大禮堂，唱出我們的三百天
+  <section class="hero-bg h-screen flex items-center justify-center text-center relative">
+    <div class="relative z-10 px-6 max-w-5xl" data-aos="zoom-in" data-aos-duration="1200">
+      <span class="inline-block bg-pink-600 text-white px-4 py-1 rounded-full text-sm font-bold mb-4 tracking-widest uppercase">Special Anniversary Concert</span>
+      <h2 class="text-5xl md:text-8xl font-black text-white drop-shadow-2xl leading-tight mb-6">
+        唱出我們的 <span class="text-yellow-300">三百天</span>
       </h2>
-      <p class="mt-6 text-lg md:text-2xl text-pink-100 font-light tracking-wide">
-        與崴崴孟孟一起創造最溫暖的音樂回憶
+      <p class="text-xl md:text-2xl text-pink-50 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+        那年夏天，我們在世新大禮堂相遇。<br>用旋律記錄每一刻感動，這場演唱會，主角是你跟我。
       </p>
-      <a href="#about"
-        class="inline-block mt-8 bg-pink-500 hover:bg-pink-600 text-white font-bold py-3.5 px-10 rounded-full transition duration-300 shadow-lg transform hover:-translate-y-0.5">
-        了解更多
-      </a>
+      
+      <!-- Countdown Timer -->
+      <div class="flex justify-center gap-4 mb-10 text-white">
+        <div class="bg-black/30 backdrop-blur-md p-4 rounded-xl min-w-[80px]">
+          <div id="days" class="text-3xl font-bold">00</div>
+          <div class="text-xs opacity-70">DAYS</div>
+        </div>
+        <div class="bg-black/30 backdrop-blur-md p-4 rounded-xl min-w-[80px]">
+          <div id="hours" class="text-3xl font-bold">00</div>
+          <div class="text-xs opacity-70">HOURS</div>
+        </div>
+        <div class="bg-black/30 backdrop-blur-md p-4 rounded-xl min-w-[80px]">
+          <div id="minutes" class="text-3xl font-bold">00</div>
+          <div class="text-xs opacity-70">MINS</div>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <a href="https://forms.gle/tbWHbGoc2NLo5DFL8" target="_blank" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 px-12 rounded-full transition-all shadow-xl hover:-translate-y-1">
+          立即報名參加
+        </a>
+        <a href="#about" class="bg-white/10 hover:bg-white/20 text-white border border-white/50 font-bold py-4 px-12 rounded-full transition-all backdrop-blur-sm">
+          了解活動細節
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- About Us -->
-  <section id="about" class="py-24 px-6">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-4xl font-bold text-center text-pink-600 mb-16 relative after:content-[''] after:block after:w-12 after:h-1 after:bg-pink-400 after:mx-auto after:mt-4">
-        關於我們
-      </h2>
-
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div class="overflow-hidden rounded-3xl shadow-2xl group flex justify-center items-center bg-white">
-          <img
-            src="https://weimengmusic.com/images/1.png"
-            alt="崴孟活動主視覺"
-            class="w-full h-auto max-h-[450px] object-cover group-hover:scale-105 transition duration-500"
-          />
-        </div>
-
-        <div class="space-y-6">
-          <p class="text-lg leading-relaxed text-gray-700">
-            崴崴與孟孟即將來到<strong class="text-pink-600 font-bold">「世新大學」</strong>，在充滿青春與夢想的世新大禮堂，舉辦一場屬於大家的《崴孟三百天》紀念演唱會。
-          </p>
-          <p class="text-lg leading-relaxed text-gray-700">
-            世新大學不只是校園，更是一個能創造音樂回憶與情感連結的地方。透過音樂、互動與合唱，讓每位觀眾都能感受到溫暖與陪伴。
-          </p>
-          <p class="text-lg leading-relaxed text-gray-700">
-            演唱會最後還會開放粉絲上台簽名與拍照，一起留下最珍貴的三百天回憶。
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 活動特色 -->
-  <section class="py-24 bg-gradient-to-r from-pink-400 to-amber-300">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-white mb-16">
-        活動亮點
-      </h2>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white/90 backdrop-blur p-8 rounded-3xl shadow-xl text-center hover:shadow-2xl transition duration-300">
-          <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">🎤</div>
-          <h3 class="text-2xl font-bold text-pink-600 mb-4">現場演唱</h3>
-          <p class="text-gray-600 leading-relaxed">崴崴孟孟將帶來最溫暖動人的歌曲表演。</p>
-        </div>
-
-        <div class="bg-white/90 backdrop-blur p-8 rounded-3xl shadow-xl text-center hover:shadow-2xl transition duration-300">
-          <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">✨</div>
-          <h3 class="text-2xl font-bold text-pink-600 mb-4">粉絲互動</h3>
-          <p class="text-gray-600 leading-relaxed">與台下觀眾一起合唱、互動與分享感動。</p>
-        </div>
-
-        <div class="bg-white/90 backdrop-blur p-8 rounded-3xl shadow-xl text-center hover:shadow-2xl transition duration-300">
-          <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">📸</div>
-          <h3 class="text-2xl font-bold text-pink-600 mb-4">簽名拍照</h3>
-          <p class="text-gray-600 leading-relaxed">活動結束後開放粉絲上台合照與簽名留念。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="py-24 px-6">
+  <section id="about" class="py-24 px-6 relative overflow-hidden">
+    <div class="bg-circle w-[400px] h-[400px] bg-pink-200 top-0 -left-20"></div>
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl font-bold text-center text-pink-600 mb-16 relative after:content-[''] after:block after:w-12 after:h-1 after:bg-pink-400 after:mx-auto after:mt-4">
-        聯絡資訊
-      </h2>
+      <div class="text-center mb-20" data-aos="fade-up">
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">關於這場聚會</h2>
+        <div class="w-20 h-1.5 bg-pink-500 mx-auto rounded-full"></div>
+      </div>
 
-      <div class="grid md:grid-cols-2 gap-10">
-        <!-- 左邊資訊 -->
-        <div class="bg-white p-8 rounded-3xl shadow-xl flex flex-col justify-center">
-          <h3 class="text-2xl font-bold mb-6 text-pink-500">活動資訊</h3>
-          <div class="space-y-4 text-lg text-gray-700">
-            <p>📍 <span class="font-bold">地址：</span>世新大學大禮堂 (台北市文山區木柵路一段171號)</p>
-            <p>☎️ <span class="font-bold">電話：</span>02-2236-8225</p>
-            <p>🕒 <span class="font-bold">時間：</span>晚上 6:00 - 9:30</p>
-            <p class="pt-4 text-pink-600 font-medium border-t border-pink-100 text-center md:text-left">
-              🎵 歡迎所有熱愛音樂的朋友一起參加！
-            </p>
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="relative" data-aos="fade-right">
+          <img src="https://weimengmusic.com/images/1.png" alt="崴孟" class="relative z-10 rounded-3xl shadow-2xl w-full transform hover:rotate-2 transition-transform duration-500" />
+        </div>
+        <div class="space-y-8" data-aos="fade-left">
+          <h3 class="text-3xl font-bold text-gray-800 leading-snug">從網路的另一端，<br><span class="text-pink-600">走到舞台的中心。</span></h3>
+          <p class="text-lg text-gray-600 leading-relaxed italic border-l-4 border-pink-500 pl-4">「崴崴與孟孟一直相信，音樂是傳遞心跳最快的方式。」</p>
+          <p class="text-lg text-gray-600 leading-relaxed">在世新大學大禮堂，我們將用最真誠的聲音，感謝一直支持我們的你們。演唱會最後還會開放粉絲上台簽名與拍照，留下專屬的回憶。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section id="schedule" class="py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-black text-gray-900 mb-4">活動流程表</h2>
+      </div>
+      <div class="space-y-8">
+        <div class="flex gap-6 items-start" data-aos="fade-left"><div class="text-pink-600 font-bold">18:00</div><div class="flex-1 bg-pink-50 p-6 rounded-2xl"><h4 class="font-bold">開放入場與周邊搶購</h4></div></div>
+        <div class="flex gap-6 items-start" data-aos="fade-left" data-aos-delay="100"><div class="text-pink-600 font-bold">18:30</div><div class="flex-1 bg-white border border-pink-100 p-6 rounded-2xl shadow-sm"><h4 class="font-bold">崴孟三百天正式開演</h4></div></div>
+        <div class="flex gap-6 items-start" data-aos="fade-left" data-aos-delay="200"><div class="text-pink-600 font-bold">21:00</div><div class="flex-1 bg-pink-600 text-white p-6 rounded-2xl shadow-lg"><h4 class="font-bold">簽名與粉絲合影留念</h4></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Map -->
+  <section id="contact" class="py-24 px-6 bg-pink-50">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-4xl font-black mb-12 text-gray-900">準備好跟我們一起唱了嗎？</h2>
+      <div class="grid md:grid-cols-2 gap-12 text-left">
+        <div data-aos="fade-up">
+          <div class="space-y-6">
+            <p class="font-bold text-lg">📍 地點：世新大學 大禮堂 (行政大樓)</p>
+            <p class="font-bold text-2xl text-pink-600">📅 2026年 7月 12日 18:30 開演</p>
+          </div>
+          <div class="mt-10">
+            <a href="https://forms.gle/tbWHbGoc2NLo5DFL8" target="_blank" class="inline-block w-full text-center bg-pink-600 text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-pink-700 transition shadow-2xl transform hover:scale-105">
+              立即前往報名表單 →
+            </a>
           </div>
         </div>
-
-        <!-- Google Map：已校正為世新大學大禮堂（木柵路一段171號行政大樓） -->
-        <div class="rounded-3xl overflow-hidden shadow-xl h-[400px]">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.444901053429!2d121.54228947614999!3d24.984992540263375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa152431e7d5%3A0x6bde3c3f0b240510!2z5LiW5paw5aSn5a245aSn567au5YCC!5e0!3m2!1szh-TW!2stw!4v1716700000000!5m2!1szh-TW!2stw" 
-            width="100%" 
-            height="100%" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+        <div class="rounded-3xl overflow-hidden shadow-2xl h-[300px]" data-aos="zoom-in">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.444901053429!2d121.54228947614999!3d24.984992540263375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aa152431e7d5%3A0x6bde3c3f0b240510!2z5LiW5paw5aSn5a245aSn567au5YCC!5e0!3m2!1szh-TW!2stw!4v1716700000000!5m2!1szh-TW!2stw" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-pink-600 text-white text-center py-8 border-t border-pink-500/20">
-    <p class="text-sm opacity-90 tracking-wide">
-      © 2026 崴孟三百天活動網站 ｜ 世新大學音樂回憶企劃
-    </p>
+  <!-- Footer (已移除 IG 與 YT) -->
+  <footer class="bg-gray-900 text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-10 border-b border-gray-800 pb-12">
+        <div class="text-center md:text-left">
+          <h3 class="text-3xl font-black mb-2 text-pink-500">崴孟三百天</h3>
+          <p class="text-gray-400">世新大學音樂回憶企劃紀念網站</p>
+        </div>
+        
+        <div class="flex flex-col items-center md:items-end gap-4">
+          <p class="text-sm text-gray-500 tracking-widest uppercase">Developer Info</p>
+          <a href="https://a114070005-design.github.io/" target="_blank" class="bg-white/5 hover:bg-white/10 border border-white/20 px-8 py-3 rounded-xl transition-all flex items-center gap-3 group">
+            <span class="text-gray-300 group-hover:text-yellow-400 transition font-bold">個人履歷</span>
+            <svg class="w-5 h-5 text-gray-500 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row justify-between items-center pt-8 gap-4">
+        <div class="flex gap-6 text-gray-500 text-sm">
+          <a href="https://a114070005-design.github.io/" target="_blank" class="hover:text-white transition underline decoration-pink-500 decoration-2 underline-offset-4 font-medium italic">Resume / 個人履歷</a>
+        </div>
+        <p class="text-xs text-gray-600">© 2026 Weimeng Music & Design. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
 
   <!-- JavaScript -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    AOS.init({ once: true, duration: 800 });
     const nav = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) { nav.classList.add("py-2", "bg-pink-700"); nav.classList.remove("py-4", "glass-nav"); }
+      else { nav.classList.remove("py-2", "bg-pink-700"); nav.classList.add("py-4", "glass-nav"); }
+    });
+
+    const targetDate = new Date("July 12, 2026 18:30:00").getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById("days").innerText = d < 10 ? '0'+d : d;
+      document.getElementById("hours").innerText = h < 10 ? '0'+h : h;
+      document.getElementById("minutes").innerText = m < 10 ? '0'+m : m;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
     const menuBtn = document.getElementById("menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
-    const menuIcon = document.getElementById("menu-icon");
-
-    // Navbar 捲動效果
-    window.addEventListener("scroll", function () {
-      if (window.scrollY > 50) {
-        nav.classList.remove("bg-pink-500/90");
-        nav.classList.add("bg-pink-600", "py-3");
-      } else {
-        nav.classList.remove("bg-pink-600", "py-3");
-        nav.classList.add("bg-pink-500/90");
-      }
-    });
-
-    // 手機版選單開關
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-      if (mobileMenu.classList.contains("hidden")) {
-        menuIcon.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
-      } else {
-        menuIcon.setAttribute("d", "M6 18L18 6M6 6l12 12");
-      }
-    });
-
-    // 點擊連結後自動收起選單
-    const mobileLinks = mobileMenu.querySelectorAll("a");
-    mobileLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-        menuIcon.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
-      });
-    });
+    menuBtn.addEventListener("click", () => { mobileMenu.classList.toggle("hidden"); });
   </script>
-
 </body>
 </html>
